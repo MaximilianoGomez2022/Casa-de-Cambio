@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="container">
+    <h1>Casa de cambio</h1>
+  </header>
+  <div  class="container">
+  <div id="errorSuperior" class="alert alert-danger w-100 mt-2" role="alert" style="display: none;">
+  Hay errores en los datos ingresados.
+  </div>
+  </div>
+
+    <section class="container mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <h2 class="text-center mb-5">Conversor de tipo de cambio</h2>
+          <form >        
+            <div class="form-group">
+              <label for="ingreso">Elegí el tipo de moneda que queres cambiar</label>
+              <select id="moneda" name="moneda" class="form-select" aria-label="Default select example" onchange="obtenerValue()">
+                <option value="elegi" selected>Elegí tu moneda a cambiar ...</option>
+                <option value="ARS">ARS</option>
+                <option value="dolar">Dólar</option>
+                <option value="euro">Euro</option>
+                <option value="real">Real</option>
+              </select>
+              <div id="errorMoneda" class="text-danger" style="display: none;">Debés seleccionar un tipo de moneda válida.</div>
+            </div>
+  
+              <div class="form-group">
+                <label for="ingreso">Ingresá el monto a cambiar</label>
+                <input type="number" class="form-control" id="ingreso" placeholder="ingresá el monto a cambiar">
+                <div id="errorMonto" class="text-danger" style="display: none;">Debés ingresar un monto.</div>
+              </div>
+  
+              <div class="form-group">
+                <label for="ingreso">Elegí el tipo de moneda que queres recibir</label>
+                <select id="cambio" name="cambio" class="form-select" aria-label="Default select example" onchange="volverAdefault()">
+                  <option selected value="elegi2">Elegí el tipo de cambio ...</option>
+                  <option id="ARS" value="ARS">ARS</option>
+                  <option id="dolar" value="dolar">Dólar</option>
+                  <option id="blue" value="dolar blue">Dólar blue</option>
+                  <option id="ccl" value="dolar ccl">Dólar CCL</option>
+                  <option id="turista" value="dolar turista">Dólar turista</option>
+                  <option id="oficial" value="dolar oficial">Dólar oficial</option>
+                  <option id="solidario" value="dolar solidario">Dólar solidario</option>
+                  <option id="ARSblue" value="ARSblue">ARS ( Dólar blue )</option>
+                  <option id="ARSccl" value="ARSccl">ARS ( Dólar CCL )</option>
+                  <option id="ARSturista" value="ARSturista">ARS ( Dólar turista )</option>
+                  <option id="ARSoficial" value="ARSoficial">ARS ( Dólar oficial )</option>
+                  <option id="ARSsolidario" value="ARSsolidario">ARS ( Dólar solidario )</option>
+                  <option id="euro" value="euro">Euro</option>
+                  <option id="real" value="real">Real</option>
+                </select>
+                <div id="errorMoneda1" class="text-danger" style="display: none;">Debés seleccionar un tipo de moneda válida.</div>
+              </div>
+
+              <button type="button" id="boton" class="btn btn-success w-100">Convertir</button>
+            </form>
+            <ul id="resultado">
+
+            </ul>            
+        </div>
+
+        <div class="col-md-4" id="valores">
+          <h2 class="mb-5">Valores de Cambio</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Dólar blue</h3>
+              <p>Compra $285</p>
+              <p>Venta $290</p>
+            </div>
+
+            <div class="col-md-6">
+              <h3>Dólar CCL</h3>
+              <p>Compra $290</p>
+              <p>Venta $295</p>
+            </div>
+  
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Dólar turista</h3>
+              <p>Compra $280</p>
+              <p>Venta $275</p>
+            </div>
+  
+            <div class="col-md-6">
+              <h3>Dólar solidario</h3>
+              <p>Compra $235</p>
+              <p>Venta $240</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Euro</h3>
+              <p>Compra $300</p>
+              <p>Venta $310</p>
+            </div>
+  
+            <div class="col-md-6">
+              <h3>Real</h3>
+              <p>Compra $22.50</p>
+              <p>Venta $25.35</p>
+            </div>
+          </div>          
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+      <hr>
+    </section>
+
+    <section class="container mb-5" id="otras">
+      <h2 class="mb-5">Otras cotizaciones</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Euro / Dólar</h3>
+          <p>Compra 1.00</p>
+          <p>Venta 1.02</p>
+        </div>
+
+        <div class="col-md-4">
+        <h3>Euro / Real</h3>
+        <p>Compra 5.18</p>
+        <p>Venta 5.32</p>
+      </div>
+
+        <div class="col-md-4">
+          <h3>Real / Dólar</h3>
+          <p>Compra 0.19</p>
+          <p>Venta 5.00</p>
+        </div>
+    </section>
+
+    <script src="js.js"></script>
+    <footer>
+      Maximiliano Gomez - Conversor 2022 
+    </footer>
+</body>
+
+</html>
